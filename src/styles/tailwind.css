@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/forms';
+@import "tailwindcss-animated";
+@import "tailwindcss-intersect";
+
+@theme {
+  /* Her tilføjes theme variable // tokens */
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@layer components {
+}
+
+@layer utilities {
+}
+
+/* Scroll animation på navbar */
+html {
+  scroll-behavior: smooth;
+}
+
+.min-h-mobile {
+  min-height: 100svh;
+}
+@supports (min-height: 100dvh) {
+  .min-h-mobile {
+    min-height: 100dvh;
+  }
+}
+.h-mobile {
+  height: 100svh;
+}
+@supports (height: 100dvh) {
+  .h-mobile {
+    height: 100dvh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

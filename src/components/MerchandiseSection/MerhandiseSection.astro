@@ -1,0 +1,26 @@
+---
+import Link from "../Link/Link.astro";
+
+const merchandiseLink =
+  "https://www.hjemhavn.dk/collections/plastic-change-merchandise";
+---
+
+<section class="h-60 bg-slate-950 text-center text-white">
+  <h2 class="py-5 text-4xl">Vil du gerne se noget af vores merchandise?</h2>
+</section>
+
+<section id="merch" class="bg-slate-950 py-20 md:py-40">
+  <div class="container mx-auto max-w-4xl px-6">
+    <h2 class="text-3xl font-bold md:text-4xl">Merch (sekundært)</h2>
+    <p class="mt-2 text-white/80">
+      Støt helst uden køb — det er bedst for klimaet. Men hvis du vil vise
+      flaget:
+    </p>
+
+    <div
+      class="mt-6 inline-flex rounded-xl bg-white px-6 py-3 font-semibold text-slate-900 underline-offset-4 hover:underline"
+    >
+      <Link href={merchandiseLink}> Besøg shoppen</Link>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+import HeroSection from "../components/HeroSection/HeroSection.astro";
+import PlastInfoSection from "../components/PlastInfoSection/PlastInfoSection.astro";
+import ActionsGridSection from "../components/ActionsGridSection/ActionsGridSection.astro";
+import ImpactSection from "../components/ImpactSection/ImpactSection.astro";
+import SupportSection from "../components/SupportSection/SupportSection.astro";
+import MerhandiseSection from "../components/MerchandiseSection/MerhandiseSection.astro";
+---
+
+<MainLayout title="Titel">
+  <section id="story">
+    <HeroSection />
+    <PlastInfoSection />
+    <ActionsGridSection />
+    <ImpactSection />
+    <SupportSection />
+    <MerhandiseSection />
+    <script type="module">
+      import { initScrolly } from "/src/scripts/scrolly.js";
+      initScrolly();
+    </script>
+  </section>
+</MainLayout>

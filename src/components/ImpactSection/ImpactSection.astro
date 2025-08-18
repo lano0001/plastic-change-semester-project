@@ -1,0 +1,80 @@
+---
+const milestones = [
+  {
+    id: 1,
+    year: "Politisk påvirkning",
+    text: "Plastic Change presser på i EU og FN for bindende mål: mindre engangsplast, stærkt producentansvar og krav til design, genbrug og genanvendelighed.",
+  },
+  {
+    id: 2,
+    year: "Viden & dokumentation",
+    text: "Indsamler og deler viden om plastforurening – fra data og rapporter til cases fra Danmark – så medier, borgere og beslutningstagere kan handle på fakta.",
+  },
+  {
+    id: 3,
+    year: "Undervisning & adfærd",
+    text: "Udvikler undervisningsforløb, materialer og kampagner (#SingleUseSucks), der gør det let at vælge genbrug, fravælge engang og sortere rigtigt.",
+  },
+  {
+    id: 4,
+    year: "Partnerskaber & løsninger",
+    text: "Samarbejder med kommuner, festivaler og virksomheder om konkrete pilotprojekter med refill/genbrugssystemer – og hjælper med plast-handlingsplaner.",
+  },
+];
+---
+
+<section id="impact" class="relative bg-slate-950">
+  <div class="md:grid md:grid-cols-2">
+    <div
+      class="visual sticky top-0 z-0 hidden h-[100svh] items-center justify-center md:flex"
+    >
+      <svg
+        id="impact-svg"
+        viewBox="0 0 600 800"
+        class="h-[70vh] w-auto drop-shadow-[0_0_30px_rgba(16,185,129,0.15)]"
+        aria-hidden="true"
+      >
+        <defs>
+          <linearGradient id="track" x1="0" x2="1" y1="1" y2="0">
+            <stop offset="0%" stop-color="#10b981" stop-opacity="0.25"></stop>
+            <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.25"></stop>
+          </linearGradient>
+        </defs>
+
+        <path
+          id="impact-path"
+          d="M 120 700 C 240 600, 330 520, 300 420 S 380 260, 500 180"
+          fill="none"
+          stroke="url(#track)"
+          stroke-width="10"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+
+        <g class="nodes"></g>
+
+        <circle
+          id="impact-puck"
+          r="10"
+          fill="#fff"
+          stroke="#10b981"
+          stroke-width="4"></circle>
+      </svg>
+    </div>
+
+    <div class="steps relative z-10">
+      {
+        milestones.map((m) => (
+          <article
+            class="step flex min-h-[100svh] items-center px-6 py-20 md:py-40"
+            data-step={m.id}
+          >
+            <div class="max-w-xl">
+              <h2 class="text-3xl font-bold md:text-4xl">{m.year}</h2>
+              <p class="mt-4 text-white/80">{m.text}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,154 @@
+---
+export interface Step {
+  title: string;
+  body?: string;
+}
+export interface Props {
+  id?: string;
+  steps?: Step[];
+  maxCount?: number;
+}
+
+const {
+  id = "plastik",
+  maxCount = 23000000,
+  steps = [
+    {
+      title: "Plastproduktionen er enorm",
+      body: "Verden producerer 430–460 mio. ton plast om året – og er på vej mod 736 mio. ton i 2040 uden handling.",
+    },
+    {
+      title: "Engang og emballage",
+      body: "Omtrent en tredjedel af al plast bruges til emballage, ofte kun i få minutter.",
+    },
+    {
+      title: "For lidt genanvendes",
+      body: "Globalt genanvendes 9% – så affaldsstrømmen vokser fortsat.",
+    },
+    {
+      title: "Lækage til vandmiljø",
+      body: "Hvert år lækker 19–23 mio. ton plast til søer, floder og hav. (Her tæller vi op mod 23 mio.)",
+    },
+    {
+      title: "Hvad betyder det i minutter?",
+      body: "Det svarer til omkring 36–44 ton plast pr. minut, året rundt.",
+    },
+    {
+      title: "Løsningen kræver systemændringer",
+      body: "Reduktion af produktion, design uden problemplast, bedre indsamlingssystemer – og politiske aftaler.",
+    },
+  ],
+} = Astro.props;
+---
+
+<section
+  id={id}
+  class="scrolly-pinned relative bg-slate-950"
+  data-max={String(maxCount)}
+>
+  <div class="items-stretch md:grid md:grid-cols-2">
+    <div class="visual sticky top-0 z-0 hidden h-[100svh] md:block">
+      <div
+        class="relative h-full w-full overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-black"
+      >
+        <svg
+          class="sp-svg absolute inset-0 h-full w-full"
+          viewBox="0 0 600 800"
+          aria-hidden="true"
+        >
+          <defs>
+            <linearGradient id="spWaveGrad" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#60a5fa" stop-opacity="0.5"></stop>
+              <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.25"
+              ></stop>
+            </linearGradient>
+          </defs>
+
+          <!-- Waves -->
+          <path
+            class="sp-wave1"
+            d="M-50,640 C120,600 220,680 360,650 480,620 560,680 700,660"
+            fill="none"
+            stroke="url(#spWaveGrad)"
+            stroke-width="8"
+            stroke-linecap="round"></path>
+          <path
+            class="sp-wave2"
+            d="M-50,690 C120,650 220,730 360,700 480,670 560,730 700,710"
+            fill="none"
+            stroke="url(#spWaveGrad)"
+            stroke-width="6"
+            stroke-linecap="round"></path>
+          <path
+            class="sp-wave3"
+            d="M-50,740 C120,700 220,780 360,750 480,720 560,780 700,760"
+            fill="none"
+            stroke="url(#spWaveGrad)"
+            stroke-width="4"
+            stroke-linecap="round"></path>
+
+          <!-- Microplastic particles -->
+          <g class="sp-particles">
+            <circle
+              class="p"
+              cx="120"
+              cy="520"
+              r="3"
+              fill="#93c5fd"
+              opacity="0.9"></circle>
+            <circle
+              class="p"
+              cx="240"
+              cy="580"
+              r="2"
+              fill="#a5f3fc"
+              opacity="0.8"></circle>
+            <circle
+              class="p"
+              cx="420"
+              cy="560"
+              r="2.5"
+              fill="#7dd3fc"
+              opacity="0.85"></circle>
+            <circle
+              class="p"
+              cx="330"
+              cy="620"
+              r="2"
+              fill="#93c5fd"
+              opacity="0.8"></circle>
+            <circle
+              class="p"
+              cx="520"
+              cy="610"
+              r="3"
+              fill="#a5f3fc"
+              opacity="0.85"></circle>
+          </g>
+        </svg>
+
+        <!-- Counter -->
+        <div class="sp-stat absolute bottom-6 left-6">
+          <span class="sp-stat-num text-4xl font-bold">0</span>
+          <span class="ml-2 text-sm text-white/70">enheder</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="steps relative z-10">
+      {
+        steps.map((s, i) => (
+          <article
+            class="step flex min-h-[100svh] items-center px-6 py-20 md:py-40"
+            data-step={i + 1}
+          >
+            <div class="max-w-xl">
+              <h2 class="text-3xl font-bold md:text-4xl">{s.title}</h2>
+              {s.body && <p class="mt-4 text-white/80">{s.body}</p>}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

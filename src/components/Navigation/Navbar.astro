@@ -1,0 +1,76 @@
+---
+const links = [
+  { href: "#hero", label: "Hero" },
+  { href: "#plastik", label: "Hvad er plast?" },
+  { href: "#actions", label: "Det kan du gøre" },
+  { href: "#impact", label: "Vores effekt" },
+  { href: "#support", label: "Støt" },
+  { href: "#merch", label: "Merch" },
+];
+---
+
+<nav
+  class="fixed inset-x-0 top-0 z-50 bg-slate-950/70 text-white backdrop-blur supports-[backdrop-filter]:bg-slate-950/60"
+>
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="flex h-14 items-center justify-between md:h-16">
+      <a href="#hero" class="font-extrabold whitespace-nowrap"
+        >Plastic&nbsp;Change</a
+      >
+
+      <ul class="hidden items-center gap-5 text-sm md:flex">
+        {
+          links.map((l) => (
+            <li>
+              <a class="hover:underline" href={l.href}>
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <details class="relative md:hidden [&[open]>div]:block">
+        <summary
+          class="-mr-2 list-none rounded-lg p-2 hover:bg-white/5 focus-visible:outline focus-visible:outline-emerald-400"
+          aria-label="Åbn menu"
+          role="button"
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M3 6h18M3 12h18M3 18h18"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"></path>
+          </svg>
+        </summary>
+
+        <div
+          class="absolute right-0 mt-2 hidden w-56 rounded-xl border border-white/10 bg-slate-900/95 shadow-lg"
+        >
+          <ul class="py-2 text-sm">
+            {
+              links.map((l) => (
+                <li>
+                  <a href={l.href} class="block px-4 py-2 hover:bg-white/5">
+                    {l.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+</nav>
+
+<script is:inline>
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const details =
+      e.target.closest("details") || document.querySelector("nav details");
+    if (details && details.open) details.removeAttribute("open");
+  });
+</script>

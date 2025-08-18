@@ -1,0 +1,29 @@
+---
+const actionItems = [
+  {
+    t: "Sig nej til engangsplast",
+    d: "Medbring kop, flaske og taske.",
+  },
+  { t: "Vælg genbrug", d: "Køb holdbart — reparér før du erstatter." },
+  {
+    t: "Sorter og påvirk",
+    d: "Sorter rigtigt og støt politik, der reducerer plast.",
+  },
+];
+---
+
+<section id="actions" class="bg-slate-950 py-20 md:py-40">
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold md:text-4xl">Det kan du gøre</h2>
+    <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
+      {
+        actionItems.map((c) => (
+          <div class="action-card rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+            <h3 class="text-xl font-semibold">{c.t}</h3>
+            <p class="mt-2 text-white/80">{c.d}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
