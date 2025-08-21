@@ -1,6 +1,5 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-
 import HeroSection from "../components/HeroSection/HeroSection.astro";
 import PlastInfoSection from "../components/PlastInfoSection/PlastInfoSection.astro";
 import ActionsGridSection from "../components/ActionsGridSection/ActionsGridSection.astro";
@@ -17,9 +16,16 @@ import MerhandiseSection from "../components/MerchandiseSection/MerhandiseSectio
     <ImpactSection />
     <SupportSection />
     <MerhandiseSection />
-    <script type="module">
+
+    <script>
       import { initScrolly } from "../scripts/scrolly.js";
-      initScrolly();
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initScrolly, {
+          once: true,
+        });
+      } else {
+        initScrolly();
+      }
     </script>
   </section>
 </MainLayout>
